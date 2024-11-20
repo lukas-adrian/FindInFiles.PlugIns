@@ -1,0 +1,8 @@
+/.idea
+/.vs
+/PlugIns.sln.DotSettings.user
+/TestApp/bin
+/TestApp/obj
+/TestApp/TestApp.csproj.user
+/TextFilesKMP/bin
+/TextFilesKMP/obj
