@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2024 lukas-adrian
+Copyright (c) 2024 Lukasz Adrian Sikora (lukas-adrian)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
