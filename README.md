@@ -1,7 +1,8 @@
 ## Project SearchPlugIns
 
-Use the Project TextFilesKMP as an example.
+The PlugIns are for the FindInFiles-Project, see [here](https://github.com/lukas-adrian/FindInFiles.git)
 
+Use the PlugIn-Project TextFilesKMP as an example if you want to create own PlugIns.
 
 To create some plugin just reference PlugInBase and inherit from ISearchInFolderPlugIn.
 
@@ -23,8 +24,6 @@ To create some plugin just reference PlugInBase and inherit from ISearchInFolder
 * maxFileSizeMB, it can be 0 if every file will be allowed. If that value is 0 minFileSizeMB will be also 0
 * progress, is for the waiting bar
 * cancellationToken, for cancelling
-
-
 
 ### Extensions
 
