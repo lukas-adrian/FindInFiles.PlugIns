@@ -127,7 +127,10 @@ namespace TextFilesKMP
                while ((line = reader.ReadLine()) != null)
                {
                   lineNumber++;
-                  int nFoundIndex = KMPAlgorithm(line, searchTerm);
+                  string lineLower = line.ToLower();
+                  string searchTermLower = searchTerm.ToLower();
+
+                  int nFoundIndex = KMPAlgorithm(lineLower, searchTermLower);
                   if (nFoundIndex >= 0)
                   {
                      if (foundResults == null)
