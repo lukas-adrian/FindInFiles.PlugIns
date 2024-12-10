@@ -15,9 +15,9 @@ namespace TestApp
       {
          InitializeComponent();
 
-         string sPath = @"C:\AB_DATE\Organizations\";
-         string sExt = @"abs";
-         string sSearchText = @"cadbea20-544c-497a-b486-faa5dd54c6c";
+         string sPath = @"C:\Users\lukas\Development\AdiSoft\FindInFiles.PlugIns\";
+         string sExt = @"cs";
+         string sSearchText = @"addrange";
 
          TextFilesKMP.SearchInTextFilesKMP test = new SearchInTextFilesKMP();
          IProgress<Int32> prog = new Progress<Int32>();
