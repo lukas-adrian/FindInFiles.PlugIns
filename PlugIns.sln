@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextFilesKMP", "TextFilesKM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{9B89AECA-327E-4CD3-894C-717A8B40A5B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFFiles", "PDFFiles\PDFFiles.csproj", "{76A39D5B-D7D7-4421-8FC0-CACC052E758C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{9B89AECA-327E-4CD3-894C-717A8B40A5B6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9B89AECA-327E-4CD3-894C-717A8B40A5B6}.Release|x64.ActiveCfg = Release|Any CPU
 		{9B89AECA-327E-4CD3-894C-717A8B40A5B6}.Release|x64.Build.0 = Release|Any CPU
+		{76A39D5B-D7D7-4421-8FC0-CACC052E758C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A39D5B-D7D7-4421-8FC0-CACC052E758C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76A39D5B-D7D7-4421-8FC0-CACC052E758C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{76A39D5B-D7D7-4421-8FC0-CACC052E758C}.Debug|x64.Build.0 = Debug|Any CPU
+		{76A39D5B-D7D7-4421-8FC0-CACC052E758C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76A39D5B-D7D7-4421-8FC0-CACC052E758C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76A39D5B-D7D7-4421-8FC0-CACC052E758C}.Release|x64.ActiveCfg = Release|Any CPU
+		{76A39D5B-D7D7-4421-8FC0-CACC052E758C}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

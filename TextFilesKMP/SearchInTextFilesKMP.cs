@@ -6,23 +6,20 @@ namespace TextFilesKMP
    public sealed class SearchInTextFilesKMP : ISearchInFolderPlugIn
    {
       public event EventHandler<FileSearchEventArgs> FileSearchCompleted;
-
+      public event EventHandler<string> DebugOutput;
+      
       public List<string> GetExtensions()
       {
          return new List<String>();
       }
 
       public async Task<List<FileSearchEventArgs>> SearchInFolder(
-         String path,
-         String extension,
+         List<String> lstAllFiles,
          String searchTerm,
-         Boolean subDirs,
-         Int32 minFileSizeMB,
-         Int32 maxFileSizeMB,
          IProgress<Int32> progress,
          CancellationToken cancellationToken)
       {
-         ConcurrentBag<SearchResult> foundResults = new ConcurrentBag<SearchResult>();
+         ConcurrentBag<SearchResult> foundResults = new();
 
          int totalFilesAllOut = 0;
          ConcurrentDictionary<String, UInt64>? dicLineNumbers = new();
@@ -32,22 +29,9 @@ namespace TextFilesKMP
 
             int processedFiles = 0;
 
-            List<String> lstAllFiles = new();
-            if (subDirs)
-               lstAllFiles.AddRange(Directory.EnumerateFiles(path, $"*.{extension}", SearchOption.AllDirectories).ToList());
-            else
-               lstAllFiles.AddRange(Directory.EnumerateFiles(path, $"*.{extension}", SearchOption.TopDirectoryOnly).ToList());
-
             Parallel.ForEach(lstAllFiles, file =>
             {
                FileInfo fileInfo = new(file);
-
-               int FileSizeMB = Convert.ToInt32(fileInfo.Length / (1024.0 * 1024.0));
-               if (!(minFileSizeMB == 0 && maxFileSizeMB == 0) &&
-                   (FileSizeMB < minFileSizeMB || FileSizeMB > maxFileSizeMB))
-               {
-                  return;
-               }
 
                totalFilesAllOut++;
 
@@ -79,7 +63,7 @@ namespace TextFilesKMP
 
             return new List<FileSearchEventArgs>
             {
-               new FileSearchEventArgs(
+               new(
                   FileSearchEventArgs.Status.Completed,
                   resultList: foundResults.ToList(),
                   dicLineNumbers: dicLineNumbers.ToDictionary(),
@@ -220,6 +204,11 @@ namespace TextFilesKMP
       public void OnFileSearchCompleted(FileSearchEventArgs e)
       {
          FileSearchCompleted?.Invoke(this, e);
+      }
+      
+      public void OnDebugOutput(string e)
+      {
+         DebugOutput?.Invoke(this, e);
       }
    }
 }
