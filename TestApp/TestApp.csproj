@@ -5,11 +5,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <Platforms>AnyCPU;x64</Platforms>
+    <Platforms>x64</Platforms>
     <TargetFramework>net8.0-windows</TargetFramework>
+    <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MSOffice\MSOffice.csproj" />
     <ProjectReference Include="..\PDFFiles\PDFFiles.csproj" />
     <ProjectReference Include="..\TextFilesKMP\TextFilesKMP.csproj" />
   </ItemGroup>

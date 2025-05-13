@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Text;
 using System.Windows;
+using MSOffice;
 using PDFFiles;
 using PlugInBase;
 using TextFilesKMP;
@@ -17,27 +18,32 @@ namespace TestApp
       {
          InitializeComponent();
 
-         bool SubDirs = true;
 
          //TXT
-         //  string sPath = @"C:\Users\lukas\Development\AdiSoft\FindInFiles.PlugIns\";
-         //  string sExt = @"*.cs";
-         //  string sSearchText = @"addrange";
-         //
-         // TextFilesKMP.SearchInTextFilesKMP textTest = new SearchInTextFilesKMP();
-         //  IProgress<Int32> prog = new Progress<Int32>();
-         //  textTest.FileSearchCompleted += TestOnFileSearchCompleted;
-         //
-         //  textTest.SearchInFolder(sPath, sExt, sSearchText, true, 0, 0, prog, CancellationToken.None);
+         /*string sPath = @"C:\Users\lukas\Development\AdiSoft\FindInFiles.PlugIns\";
+         string sExt = @"*.cs";
+         string sSearchText = @"addrange";
+         
+         ISearchInFolderPlugIn objPlugIn = new SearchInTextFilesKMP();*/
 
          //PDF
-         string sPath = @"C:\Users\lukas\GDrive_lukasadrian\Stellplaetze\konto";
+         /*string sPath = @"C:\tmp\pdftest";
          string sExt = @"*.pdf";
-         string sSearchText = @"Entsorgung Herne Anstalt des offentlichen Rechts SEPA";
+         string sSearchText = @"some text";
+         ISearchInFolderPlugIn objPlugIn = new SearchInPDFFiles();*/
          
-         SearchInPDFFiles pdfTest = new SearchInPDFFiles();
+         //Office
+         string sPath = @"C:\tmp\officetest";
+         string sExt = @"*.docx";
+         string sSearchText = @"test";
+         ISearchInFolderPlugIn objPlugIn = new SearchInMSOfficeFiles();
+         objPlugIn.FileSearchCompleted += this.TestOnFileSearchCompleted;
+         
+         
+         
          IProgress<Int32> prog = new Progress<Int32>();
-         pdfTest.FileSearchCompleted += this.TestOnFileSearchCompleted;
+         bool SubDirs = true;
+         
          
          List<String> lstAllFiles = new();
          if (SubDirs)
@@ -48,18 +54,16 @@ namespace TestApp
          List<string> lstFilesChecked = new List<String>();
          foreach (String sFile in lstAllFiles)
          {
-            //FileInfo fi = new FileInfo(sFile);
-            //if(ValidateFileSize(fi, 0, 0))
-               lstFilesChecked.Add(sFile);
+            lstFilesChecked.Add(sFile);
          }
          
-         pdfTest.SearchInFolder(lstFilesChecked, sSearchText, prog, CancellationToken.None);
+         objPlugIn.SearchInFolder(lstFilesChecked, sSearchText, false, false, prog, CancellationToken.None);
       }
 
       private void TestOnFileSearchCompleted(Object? sender, FileSearchEventArgs e)
       {
          if (e.ResultList != null)
-            foreach (SearchResult result in e.ResultList)
+            foreach (SearchResultFile result in e.ResultList)
             {
                Console.WriteLine(result.FilePath);
             }

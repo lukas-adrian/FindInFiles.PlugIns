@@ -1,0 +1,34 @@
+﻿{
+  "Word": [
+    ".doc",
+    ".docx",
+    ".dot",
+    ".dotx",
+    ".docm",
+    ".dotm",
+    ".rtf",
+    ".txt"
+  ],
+  "Excel": [
+    ".xls",
+    ".xlsx",
+    ".xlsm",
+    ".xlsb",
+    ".xlt",
+    ".xltx",
+    ".xltm",
+    ".csv",
+    ".ods"
+  ],
+  "PowerPoint": [
+    ".ppt",
+    ".pptx",
+    ".pptm",
+    ".pps",
+    ".ppsx",
+    ".ppsm",
+    ".pot",
+    ".potx",
+    ".potm"
+  ]
+}

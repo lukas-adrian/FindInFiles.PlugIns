@@ -16,10 +16,12 @@ namespace TextFilesKMP
       public async Task<List<FileSearchEventArgs>> SearchInFolder(
          List<String> lstAllFiles,
          String searchTerm,
+         bool matchCase,
+         bool wholeWord,
          IProgress<Int32> progress,
          CancellationToken cancellationToken)
       {
-         ConcurrentBag<SearchResult> foundResults = new();
+         ConcurrentBag<SearchResultFile> foundResults = new();
 
          int totalFilesAllOut = 0;
          ConcurrentDictionary<String, UInt64>? dicLineNumbers = new();
@@ -42,7 +44,7 @@ namespace TextFilesKMP
                }
 
 
-               SearchResult? foundInFile = FileContainsTermUsingKMP(file, searchTerm, dicLineNumbers);
+               SearchResultFile? foundInFile = FileContainsTermUsingKMP(file, searchTerm, matchCase, wholeWord, dicLineNumbers);
                if (foundInFile != null)
                {
                   foundInFile.FileSizeBytes = Convert.ToUInt64(fileInfo.Length);
@@ -98,9 +100,9 @@ namespace TextFilesKMP
       /// <param name="filePath"></param>
       /// <param name="searchTerm"></param>
       /// <param name="dicLineNumbers"></param>
-      private SearchResult? FileContainsTermUsingKMP(string filePath, string searchTerm, ConcurrentDictionary<String, UInt64>? dicLineNumbers = null)
+      private SearchResultFile? FileContainsTermUsingKMP(string filePath, string searchTerm, bool bMatchCaseIn, bool bWholeWordIn,ConcurrentDictionary<String, UInt64>? dicLineNumbers = null)
       {
-         SearchResult? foundResults = null;
+         SearchResultFile? foundResults = null;
 
          try
          {
@@ -114,12 +116,12 @@ namespace TextFilesKMP
                   string lineLower = line.ToLower();
                   string searchTermLower = searchTerm.ToLower();
 
-                  int nFoundIndex = KMPAlgorithm(lineLower, searchTermLower);
+                  int nFoundIndex = KMPAlgorithm(lineLower, searchTermLower, bMatchCaseIn, bWholeWordIn);
                   if (nFoundIndex >= 0)
                   {
                      if (foundResults == null)
                      {
-                        foundResults = new SearchResult
+                        foundResults = new SearchResultFile
                         {
                            FilePath = filePath,
                         };
@@ -153,8 +155,14 @@ namespace TextFilesKMP
          return foundResults;
       }
 
-      private int KMPAlgorithm(string text, string pattern)
+      private int KMPAlgorithm(string text, string pattern, bool bMatchCaseIn, bool bWholeWordIn)
       {
+         if (!bMatchCaseIn)
+         {
+            text = text.ToLower();
+            pattern = pattern.ToLower();
+         }
+         
          int[] lps = new int[pattern.Length];
          int j = 0;
          int i = 1;
@@ -185,8 +193,28 @@ namespace TextFilesKMP
                i++;
                j++;
             }
+            
             if (j == pattern.Length)
-               return i - j;
+            {
+               // Check for whole-word match
+               if (bWholeWordIn)
+               {
+                  bool isStartBoundary = (i - j == 0 || !char.IsLetterOrDigit(text[i - j - 1]));
+                  bool isEndBoundary = (i >= text.Length || !char.IsLetterOrDigit(text[i]));
+
+                  if (isStartBoundary && isEndBoundary)
+                  {
+                     return i - j; // Return start index of the match
+                  }
+               }
+               else
+               {
+                  return i - j; // Return start index of the match for substring search
+               }
+
+               // Reset j for next potential match
+               j = lps[j - 1];
+            }
 
             if (i < text.Length && pattern[j] != text[i])
             {

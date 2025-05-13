@@ -4,8 +4,9 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Platforms>AnyCPU;x64</Platforms>
+    <Platforms>x64</Platforms>
     <AssemblyName>$(MSBuildProjectName).fif</AssemblyName>
+    <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,5 +14,9 @@
       <HintPath>..\PlugInBase.dll</HintPath>
     </Reference>
   </ItemGroup>
+  
+   <Target Name="PostBuildCopyAll" AfterTargets="Build">
+     <Exec Command="copybuild.bat $(Configuration)" />
+   </Target>
 
 </Project>
