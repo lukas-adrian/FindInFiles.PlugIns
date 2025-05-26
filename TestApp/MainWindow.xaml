@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+    <Grid.RowDefinitions>
+      <RowDefinition Height="60"></RowDefinition>
+      <RowDefinition></RowDefinition>
+    </Grid.RowDefinitions>
+    
+    <StackPanel Grid.Row="0" Orientation="Horizontal">
+      <TextBox Name="tbPage" Width="300"></TextBox>
+      <Button Content="Enter" Width="60" Click="ButtonBase_OnClick"></Button>
+    </StackPanel>
+    
+       <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="1" CornerRadius="3">
+          <ContentControl Name="PreviewHost"/>
+       </Border>
     </Grid>
 </Window>

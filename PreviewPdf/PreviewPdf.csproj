@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>PreviewPdf.fif</AssemblyName>
+        <LangVersion>12</LangVersion>
+        <Configurations>Release;Debug</Configurations>
+        <Platforms>x64</Platforms>
+        <UseWPF>true</UseWPF>
+        <UseWindowsForms>true</UseWindowsForms>
+        <Company>PreviewPdf.fif</Company>
+        <Product>PreviewPdf.fif</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="Patagames.Pdf">
+        <HintPath>pdflibs\PdfiumViewer.dll</HintPath>
+      </Reference>
+      <Reference Include="PlugInBase">
+        <HintPath>..\PlugInBase.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+    
+    <ItemGroup>
+      <None Update="pdflibs\pdfium.dll">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+   
+   <Target Name="PostBuildCopyAll" AfterTargets="Build">
+     <Exec Command="copybuild.bat $(Configuration)" />
+   </Target>
+   
+</Project>

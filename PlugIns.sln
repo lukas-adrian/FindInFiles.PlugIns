@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextFilesKMP", "TextFilesKMP\TextFilesKMP.csproj", "{A06CD0EA-D4D6-4213-A0ED-989B568AF752}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchText", "SearchText\SearchText.csproj", "{A06CD0EA-D4D6-4213-A0ED-989B568AF752}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{9B89AECA-327E-4CD3-894C-717A8B40A5B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDFFiles", "PDFFiles\PDFFiles.csproj", "{76A39D5B-D7D7-4421-8FC0-CACC052E758C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchPdf", "SearchPdf\SearchPdf.csproj", "{76A39D5B-D7D7-4421-8FC0-CACC052E758C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSOffice", "MSOffice\MSOffice.csproj", "{B9FB931E-386F-46DC-BFA4-1407B7BAD38D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchMSOffice", "SearchMSOffice\SearchMSOffice.csproj", "{B9FB931E-386F-46DC-BFA4-1407B7BAD38D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewText", "PreviewText\PreviewText.csproj", "{7C1D4636-44D2-4D01-A61C-AC4FD6BCB647}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewPdf", "PreviewPdf\PreviewPdf.csproj", "{7DD6DCA0-9EE6-419A-BD9D-5CC017B61035}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{B9FB931E-386F-46DC-BFA4-1407B7BAD38D}.Debug|x64.Build.0 = Debug|x64
 		{B9FB931E-386F-46DC-BFA4-1407B7BAD38D}.Release|x64.ActiveCfg = Release|x64
 		{B9FB931E-386F-46DC-BFA4-1407B7BAD38D}.Release|x64.Build.0 = Release|x64
+		{7C1D4636-44D2-4D01-A61C-AC4FD6BCB647}.Debug|x64.ActiveCfg = Debug|x64
+		{7C1D4636-44D2-4D01-A61C-AC4FD6BCB647}.Debug|x64.Build.0 = Debug|x64
+		{7C1D4636-44D2-4D01-A61C-AC4FD6BCB647}.Release|x64.ActiveCfg = Release|x64
+		{7C1D4636-44D2-4D01-A61C-AC4FD6BCB647}.Release|x64.Build.0 = Release|x64
+		{7DD6DCA0-9EE6-419A-BD9D-5CC017B61035}.Debug|x64.ActiveCfg = Debug|x64
+		{7DD6DCA0-9EE6-419A-BD9D-5CC017B61035}.Debug|x64.Build.0 = Debug|x64
+		{7DD6DCA0-9EE6-419A-BD9D-5CC017B61035}.Release|x64.ActiveCfg = Release|x64
+		{7DD6DCA0-9EE6-419A-BD9D-5CC017B61035}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

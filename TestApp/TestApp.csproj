@@ -11,9 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MSOffice\MSOffice.csproj" />
-    <ProjectReference Include="..\PDFFiles\PDFFiles.csproj" />
-    <ProjectReference Include="..\TextFilesKMP\TextFilesKMP.csproj" />
+    <ProjectReference Include="..\SearchMSOffice\SearchMSOffice.csproj" />
+    <ProjectReference Include="..\SearchPdf\SearchPdf.csproj" />
+    <ProjectReference Include="..\PreviewPdf\PreviewPdf.csproj" />
+    <ProjectReference Include="..\SearchText\SearchText.csproj" />
   </ItemGroup>
 
   <ItemGroup>

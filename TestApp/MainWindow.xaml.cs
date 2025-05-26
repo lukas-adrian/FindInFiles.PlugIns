@@ -1,10 +1,10 @@
 ﻿using System.IO;
 using System.Text;
 using System.Windows;
-using MSOffice;
-using PDFFiles;
+using SearchMSOffice;
+using SearchPdf;
 using PlugInBase;
-using TextFilesKMP;
+using SearchText;
 
 
 namespace TestApp
@@ -14,6 +14,9 @@ namespace TestApp
    /// </summary>
    public partial class MainWindow : Window
    {
+      private IPreviewPlugIn objPreview = new PreviewPdf.PreviewPdf();
+   
+   
       public MainWindow()
       {
          InitializeComponent();
@@ -24,27 +27,33 @@ namespace TestApp
          string sExt = @"*.cs";
          string sSearchText = @"addrange";
          
-         ISearchInFolderPlugIn objPlugIn = new SearchInTextFilesKMP();*/
+         ISearchInFolderPlugIn objPlugIn = new SearchText();*/
 
          //PDF
-         /*string sPath = @"C:\tmp\pdftest";
+         /*string sPath = @"C:\Users\lukas\Development\AdiSoft\FindInFiles.PlugIns\PreviewPdf";
          string sExt = @"*.pdf";
-         string sSearchText = @"some text";
-         ISearchInFolderPlugIn objPlugIn = new SearchInPDFFiles();*/
-         
+         string sSearchText = @"SCHEMATA";
+         ISearchInFolderPlugIn objPlugIn = new SearchPdf();*/
+
+         /*objPreview = new PreviewPdf.PreviewPdf();
+         ParameterHelper cParam = new ParameterHelper();
+         cParam.PageNumber = 4;
+         System.Windows.Controls.Control preveiw = objPreview.GetPreviewControl(@"C:\Users\lukas\Development\AdiSoft\FindInFiles.PlugIns\PreviewPdf\test2.pdf");
+         PreviewHost.Content = preveiw;*/
+
          //Office
          string sPath = @"C:\tmp\officetest";
          string sExt = @"*.docx";
-         string sSearchText = @"test";
-         ISearchInFolderPlugIn objPlugIn = new SearchInMSOfficeFiles();
+         string sSearchText = @"Seite 2";
+         ISearchInFolderPlugIn objPlugIn = new SearchMSOffice.SearchMSOffice();
          objPlugIn.FileSearchCompleted += this.TestOnFileSearchCompleted;
-         
-         
-         
+
+
+
          IProgress<Int32> prog = new Progress<Int32>();
          bool SubDirs = true;
-         
-         
+
+
          List<String> lstAllFiles = new();
          if (SubDirs)
             lstAllFiles.AddRange(Directory.EnumerateFiles(sPath, $"{sExt}", SearchOption.AllDirectories).ToList());
@@ -56,7 +65,7 @@ namespace TestApp
          {
             lstFilesChecked.Add(sFile);
          }
-         
+
          objPlugIn.SearchInFolder(lstFilesChecked, sSearchText, false, false, prog, CancellationToken.None);
       }
 
@@ -69,5 +78,15 @@ namespace TestApp
             }
       }
 
+      private void ButtonBase_OnClick(Object sender, RoutedEventArgs e)
+      {
+         /*int nPage = Int32.Parse(tbPage.Text);
+         objPreview.SetPage(nPage);
+
+         if (nPage == 10)
+         {
+            
+         }*/
+      }
    }
 }

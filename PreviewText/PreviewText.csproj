@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>12</LangVersion>
+        <UseWPF>true</UseWPF>
+        <AssemblyName>PreviewText.fif</AssemblyName>
+        <Configurations>Debug;Release</Configurations>
+        <Platforms>x64</Platforms>
+        <Company>PreviewText.fif</Company>
+        <Product>PreviewText.fif</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="ICSharpCode.AvalonEdit">
+        <HintPath>ICSharpCode.AvalonEdit.dll</HintPath>
+      </Reference>
+      <Reference Include="PlugInBase">
+        <HintPath>..\PlugInBase.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+   <Target Name="PostBuildCopyAll" AfterTargets="Build">
+     <Exec Command="copybuild.bat $(Configuration)" />
+   </Target>
+</Project>
