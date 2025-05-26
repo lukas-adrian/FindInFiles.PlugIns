@@ -23,13 +23,13 @@ To create some plugin just reference PlugInBase and inherit from ISearchInFolder
 * cancellationToken, for cancelling
 
 ## Additional projects
-I am using [UglyToad.PdfPig](https://www.nuget.org/packages/PdfPig/) for reading PDF Files and [DocumentFormat.OpenXml](https://www.nuget.org/packages/documentformat.openxml) for reading MS Office files
+See in the ProjectFolder
 
 ## ToDo
 
-* PlugIns including PreViewWindow like TextFiles + TextPreViewWindow, PDF + PDF PreViewWindow
+* ~~PlugIns including PreviewWindow like TextFiles + TextPreViewWindow, PDF + PDF PreViewWindow~~
 * searching in multiple folder
-* add optional page number and not only row number for PDFs
+* ~~add optional page number and not only row number for PDFs~~
 * ~~add more PlugIns like PDF, Office Documents, etc~~
 
 ## License
